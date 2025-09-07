@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НижОптТорг</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        #we, #advantages, #management, #partners, #photo, #contacts {
+            scroll-margin-top: 70px;
+        }
+
+        body {
+            background-color: #bff1ff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: #f0fcff;
+        }
+        
+        .nav-link {
+            color: #000000;
+        }
+        
+        .nav-link:hover {
+            background-color: #b1eeff;
+            color: rgba(0,0,0);
+        }
+        
+        @font-face {
+            font-family: Pobeda-Bold;
+            src: url("Шрифт/Pobeda/pobeda-bold.ttf");
+        }
+        
+        .banner {
+            height: 100vh;
+            background-image: url("images/фон нов.png");
+            background-position: center;
+            background-size: cover;
+            color: #fffffff0;
+            display: flex;
+            place-items: center;
+            text-align: center;
+            font-family: pobeda-bold, Arial, sans-serif;
+            position: relative;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.66);
+            z-index: 1;
+        }
+        
+        .banner > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .banner h1 {
+            font-size: 12em;
+        }
+        
+        .banner h2 {
+            font-size: 5em;
+        }
+        
+        h1 {
+            font-size: 3em;
+            text-align: center;
+        }
+        
+        .display-5 {
+            padding: 3%;
+            padding-bottom: 0%;
+            font-size: 1.88em;
+            font-weight: normal;
+            text-align: justify;
+        }
+        
+        .hero-photo {
+            width: 100%;
+            max-width: 310px;
+            height: auto;
+        }
+        
+        .hero-name {
+            display: inline-block;
+            color: rgb(59, 5, 106);
+            font-weight: 850;
+        }
+        
+        /* ОБНОВЛЕНИЕ: Стили для фотографий коллектива */
+        .team-gallery .team-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            padding: 10px;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 5px 8px rgba(0,0,0.1,0.1);
+        }
+        
+        .team-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .team-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .team-card:hover .team-img {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #007bff, #6c757d);
+        }
+
+        
+        .fs-2 {
+            font-weight: bold;
+        }
+        
+        /* Адаптивные стили */
+        @media screen and (max-width: 1200px) {
+            .hero-name {
+                font-size: 34px;
+            }
+            
+            .banner h1 {
+                font-size: 10em;
+            }
+            
+            .banner h2 {
+                font-size: 4em;
+            }
+
+            #advantages .row {
+                text-align: center;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .nav-link {
+                margin: 0.5rem 0;
+            }
+            
+            .banner h1 {
+                font-size: 8em;
+            }
+            
+            .banner h2 {
+                font-size: 3.5em;
+            }
+            
+            .hero-info .col-md-8 {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .banner h1 {
+                font-size: 6em;
+            }
+            
+            .banner h2 {
+                font-size: 2.5em;
+            }
+            
+            .display-5 {
+                font-size: 1.5em;
+            }
+            
+            .history {
+                padding: 2rem !important;
+            }
+            
+            .hero-name {
+                font-size: 28px;
+            }
+            
+            .fs-2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .fs-3 {
+                font-size: 1.25rem !important;
+            }
+            
+            .fs-4 {
+                font-size: 1.1rem !important;
+            }
+            
+            .hero-photo {
+                max-width: 260px;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .banner h1 {
+                font-size: 4em;
+            }
+            
+            .banner h2 {
+                font-size: 1.8em;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .display-5 {
+                font-size: 1.2em;
+            }
+            
+            .hero-name {
+                font-size: 24px;
+            }
+            
+            .footer .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-photo {
+                max-width: 220px;
+            }
+            
+            .hero-info .col-md-8 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+        
+        @media screen and (max-width: 400px) {
+            .banner h1 {
+                font-size: 3em;
+            }
+            
+            .banner h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid p-3">
+            <a class="navbar-brand d-block d-lg-none" href="index.html#hero">НижОптТорг</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav" aria-controls="header-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-md-center fs-5" id="header-nav">
+                <div class="navbar-nav">
+                    <a class="nav-link me-4" href="index.html#we">О нас</a>
+                    <a class="nav-link me-4" href="index.html#advantages">Преимущества</a>
+                    <a class="nav-link me-4" href="index.html#management">Руководство</a>
+                    <a class="nav-link me-4" href="index.html#partners">Партнёры</a>
+                    <a class="nav-link me-4" href="index.html#photo">Фото</a>
+                    <a class="nav-link me-4" href="index.html#contacts">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="banner">
+        <div class="content w-100">
+            <h1>НижОптТорг</h1>
+            <h2>Официальный представитель крупного международного холдинга</h2>
+        </div>
+    </section>
+    
+    <div id="we" style="padding: 2%">
+            <h1>О НАС</h1>
+            <p class="display-5">
+                Первый филиал в городе Нижний Новгород был <b>открыт в 2009 году.</b> Сам холдинг <b>взял свое развитие с города Пермь</b>.
+                Сейчас расположились по всей России - в нашем составе <b>порядка 30 офисов.</b>
+            </p>
+            <p class="display-5">
+                Филиал «НижОптТорг» <b>специализируется по двум направлениям.</b> Основной деятельностью является <b>организация процесса сбыта</b> непродовольственной группы товаров через систему офис-склад и электронную коммерцию. 
+                С полным сопровождением и отслеживанием качества каждого этапа этого процесса. А также <b>изучение конъюнктуры рынка.</b>
+            </p>
+            <p class="display-5">Второе направление характеризует Нас со стороны взаимодействия с людьми. Обеспечиваем своим сотрудникам <b>профессиональное обучение</b> по нескольким параметрам - лидерство в управлении организацией, тайм-менеджмент, умение личного планирования, планирования развития доходной организации. 
+                Также на договорной основе можем обучить Ваших сотрудников.
+            </p>
+    </div>
+
+    <div id="advantages" style="padding-top: 2%">
+            <h1>ПОЧЕМУ ВЫБИРАЮТ НАС?</h1>
+            
+            <div class="row justify-content-center align-items-center mb-5">
+                <div class="col-12 col-md-2 mb-4 mb-md-0 text-center">
+                    <img src="images/вин.png" class="hero-photo img-fluid">
+                </div>
+                <div class="col-12 col-md-8" style="margin-left: 6%;"> 
+                    <p class="fs-2 mb-1">Win-win (выиграл-выиграл)</p>
+                    <p class="fs-4">Концепция, при которой все стороны выигрывают от сотрудничества</p> 
+                </div>
+            </div>
+            
+            <div class="row justify-content-center align-items-center mb-5">
+                <div class="col-12 col-md-2 mb-4 mb-md-0 text-center">
+                    <img src="images/обучения.png" class="hero-photo img-fluid">
+                </div>
+                <div class="col-12 col-md-8" style="margin-left: 6%;"> 
+                    <p class="fs-2 mb-1">Обучение</p>
+                    <p class="fs-4">Цель любой компании - прибыль. Мы понимаем, что чем выше квалификация наших сотрудников, тем больше обороты компании и тем выше прибыль каждого.</p> 
+                </div>
+            </div>
+            
+            <div class="row justify-content-center align-items-center mb-5">
+                <div class="col-12 col-md-2 mb-4 mb-md-0 text-center">
+                    <img src="images/качество.png" class="hero-photo img-fluid">
+                </div>
+                <div class="col-12 col-md-8" style="margin-left: 6%;"> 
+                    <p class="fs-2 mb-1">Качество</p>
+                    <p class="fs-4">Предоставление качественных продуктов сервиса – наша позиция.</p> 
+                </div>
+            </div>
+            
+            <div class="row justify-content-center align-items-center mb-5">
+                <div class="col-12 col-md-2 mb-4 mb-md-0 text-center">
+                    <img src="images/партнерство.png" class="hero-photo img-fluid">
+                </div>
+                <div class="col-12 col-md-8" style="margin-left: 6%;"> 
+                    <p class="fs-2 mb-1">Уважение к каждому</p>
+                    <p class="fs-4">Мы понимаем проблемы каждого клиента и партнера, и стремимся к оптимальному их решению.<br>Успех клиента – наша главная цель.</p> 
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center mb-5">
+                <div class="col-12 col-md-2 mb-4 mb-md-0 text-center">
+                    <img src="images/доставка.png" class="hero-photo img-fluid">
+                </div>
+                <div class="col-12 col-md-8" style="margin-left: 6%;"> 
+                    <p class="fs-2 mb-1">	
+Полное сопровождение продуктов и доставка до места назначения</p>
+                    <p class="fs-4">Мы не просто связываем клиента с поставщиком, а полностью обеспечиваем доставку продукции в течение 5 суток.</p> 
+                </div>
+            </div>
+    </div>
+    
+    <section class="hero p-5" id="management"> 
+            <h1>ЦЕНТР ПРИНЯТИЯ РЕШЕНИЙ<br></h1> 
+            <div>
+                <p class="fs-3" style="text-align: justify;">Люди, которые осуществляют контроль и корректировки каждый день, чтобы предоставить лучший сервис и сделать наших клиентов и партнеров счастливыми. <br>Знакомьтесь с нашими ключевыми <b>руководителями:</b></p>
+                
+                <div class="hero-info row justify-content-center"> 
+                    <!-- Руководитель 1 -->
+                    <div class="col-12 col-md-10 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-4 text-center mb-3 mb-md-0"> 
+                                <img src="images/аи.png" alt="Ломовской Артём Игоревич" class="hero-photo img-fluid"> 
+                            </div> 
+                            <div class="col-12 col-md-8 text-center text-md-start"> 
+                                <h2 class="hero-name">Ломовской Артём Игоревич</h2> 
+                                <p class="fs-3">Руководитель филиальной сети</p> 
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <!-- Руководитель 2 -->
+                    <div class="col-12 col-md-10 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-4 text-center mb-3 mb-md-0"> 
+                                <img src="images/юи.png" alt="Ломовская Юлия Игоревна" class="hero-photo img-fluid"> 
+                            </div> 
+                            <div class="col-12 col-md-8 text-center text-md-start"> 
+                                <h2 class="hero-name">Ломовская Юлия Игоревна</h2> 
+                                <p class="fs-3">Руководитель регионального развития</p> 
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <!-- Остальные руководители с аналогичной структурой -->
+                    <div class="col-12 col-md-10 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-4 text-center mb-3 mb-md-0"> 
+                                <img src="images/ав.jpg" alt="Трошкина Александра Викторовна" class="hero-photo img-fluid"> 
+                            </div> 
+                            <div class="col-12 col-md-8 text-center text-md-start"> 
+                                <h2 class="hero-name">Трошкина Александра Викторовна</h2> 
+                                <p class="fs-3">Руководитель регионального развития</p> 
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-10 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-4 text-center mb-3 mb-md-0"> 
+                                <img src="images/яа.jpg" alt="Смольникова Яна Анатольевна" class="hero-photo img-fluid"> 
+                            </div> 
+                            <div class="col-12 col-md-8 text-center text-md-start"> 
+                                <h2 class="hero-name">Смольникова Яна Анатольевна</h2> 
+                                <p class="fs-3">Региональный представитель</p> 
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-10 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-4 text-center mb-3 mb-md-0"> 
+                                <img src="images/ев.png" alt="Никушкин Егор Владимирович" class="hero-photo img-fluid"> 
+                            </div> 
+                            <div class="col-12 col-md-8 text-center text-md-start"> 
+                                <h2 class="hero-name">Никушкин Егор Владимирович</h2> 
+                                <p class="fs-3">Руководитель коммерческого отдела</p> 
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-10 mb-5">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-4 text-center mb-3 mb-md-0"> 
+                                <img src="images/мсчб.jpg" alt="Замулдинов Максим Сергеевич" class="hero-photo img-fluid"> 
+                            </div> 
+                            <div class="col-12 col-md-8 text-center text-md-start"> 
+                                <h2 class="hero-name">Замулдинов Максим Сергеевич</h2> 
+                                <p class="fs-3">Руководитель коммерческого отдела</p> 
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div> 
+    </section> 
+    
+    <section class="hero-city p-5 bg-body-tertiary" id="partners"> 
+        <div class="history p-5 text-center" style="margin-top: 2%">
+            <h1>ПАРТНЁРЫ</h1>             
+            <div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center">
+                <!-- Логотипы партнеров -->
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3 p-md-5">
+                            <img src="images/сдек.png" class="img-fluid" alt="Партнер 1" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3 p-md-5">
+                            <img src="images/длб.png" class="img-fluid" alt="Партнер 2" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3 p-md-5">
+                            <img src="images/оптима.png" class="img-fluid" alt="Партнер 3" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3">
+                            <img src="images/спб.jpg" class="img-fluid" alt="Партнер 4" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3">
+                            <img src="images/лого.jpg" class="img-fluid" alt="Партнер 5" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3">
+                            <img src="images/Bosch.png" class="img-fluid" alt="Партнер 6" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3">
+                            <img src="images/майкрософт.jpg" class="img-fluid" alt="Партнер 7" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body d-flex align-items-center justify-content-center p-3">
+                            <img src="images/пп.png" class="img-fluid" alt="Партнер 8" style="max-height: 80px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБНОВЛЕНИЕ: Секция с фотографиями коллектива -->
+    <section class="team-gallery py-5" id="photo">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="section-title">НАШ КОЛЛЕКТИВ</h1>
+                <p class="text-muted">СОВМЕСТНЫЕ ФОТОГРАФИИ</p>
+            </div>
+
+            <div class="row">
+                <!-- Фотографии коллектива - теперь отображаются полностью -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/мск1.jpg" class="team-img img-fluid" alt="Коллектив 1">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/мальчики.png" class="team-img img-fluid" alt="Коллектив 2">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/рисуночки.jpg" class="team-img img-fluid" alt="Коллектив 3">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/деловые.jpg" class="team-img img-fluid" alt="Коллектив 4">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/на стиле.jpg" class="team-img img-fluid" alt="Коллектив 5">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/мск2.jpg" class="team-img img-fluid" alt="Коллектив 6">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/синие.jpg" class="team-img img-fluid" alt="Коллектив 7">
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/вирус.jpg" class="team-img img-fluid" alt="Коллектив 8">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/пейнтбол.jpg" class="team-img img-fluid" alt="Коллектив 8">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/фотосессия.jpg" class="team-img img-fluid" alt="Коллектив 8">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/халикова.jpg" class="team-img img-fluid" alt="Коллектив 8">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="team-card">
+                        <img src="images/фото.jpg" class="team-img img-fluid" alt="Коллектив 8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 mt-5" id="contacts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5 class="mb-3">Контакты</h5>
+                    <p class="mb-1">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        г. Нижний Новгород, ул. Белинского, д. 32
+                    </p>
+                    <p class="mb-0">
+                        <i class="fas fa-phone me-2"></i>
+                        +7(919)-167-87-54
+                    </p>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <h5 class="mb-3">Свяжитесь с нами</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="https://wa.me/79191678754" target="_blank" class="btn btn-success">
+                            <i class="fab fa-whatsapp me-2"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <hr class="my-3">
+                    <p class="text-center mb-0">
+                        &copy; 2025 НижОптТорг. Все права защищены.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
